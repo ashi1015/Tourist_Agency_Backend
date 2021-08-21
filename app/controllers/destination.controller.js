@@ -86,3 +86,29 @@ exports.findOne = (req, res) => {
             .send({ message: "Error retrieving Destination with id=" + id });
       });
 };
+
+
+// Update a Destination by the id in the request
+exports.update = (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({
+      message: "Data to update can not be empty!",
+    });
+  }
+
+  const id = req.params.id;
+
+  Destination.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+      .then((data) => {
+        if (!data) {
+          res.status(404).send({
+            message: `Cannot update Destination with id=${id}. Maybe Destination was not found!`,
+          });
+        } else res.send({ message: "Destination was updated successfully." });
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: "Error updating Destination with id=" + id,
+        });
+      });
+};
