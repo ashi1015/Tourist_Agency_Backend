@@ -26,7 +26,8 @@ exports.create = (req, res) => {
     altitude: req.body.altitude,
     temperature: req.body.temperature,
     contact: req.body.contact,
-    visaRequirement: req.body.visaRequirement,
+      entranceFees: req.body.entranceFees,
+    visaRequirement: req.body.visaRequirement ? req.body.visaRequirement : "Not Required",
     published: req.body.published ? req.body.published : false,
   });
 
@@ -151,4 +152,28 @@ exports.deleteAll = (req, res) => {
         });
       });
 };
+
+
+// Find all published Destinations
+exports.findAllPublished = (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
+
+  Destination.paginate({ published: true }, { offset, limit })
+      .then((data) => {
+        res.send({
+          totalItems: data.totalDocs,
+          destinations: data.docs,
+          totalPages: data.totalPages,
+          currentPage: data.page - 1,
+        });
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+              err.message || "Some error occurred while retrieving destinations.",
+        });
+      });
+};
+
 
