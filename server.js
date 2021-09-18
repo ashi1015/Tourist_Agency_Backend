@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const pdf = require('html-pdf');
 
-const pdfTemplate = require('./app/documents');
+const path = require('path');
 
 const app = express();
 
@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 const db = require("./app/models");
 db.mongoose
@@ -38,19 +39,6 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to bezkoder application." });
 });
 
-app.post('/create-pdf', (req, res) => {
-    pdf.create(pdfTemplate(req.body), {}).toFile('result.pdf', (err) => {
-        if(err) {
-            res.send(Promise.reject());
-        }
-
-        res.send(Promise.resolve());
-    });
-});
-
-app.get('/fetch-pdf', (req, res) => {
-    res.sendFile(`${__dirname}/result.pdf`)
-})
 
 require("./app/routes/destination.routes")(app);
 
