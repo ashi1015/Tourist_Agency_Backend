@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Travel Agency." });
 });
 
-require("./app/routes/turorial.routes")(app);
+require("./app/routes/hotel.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8085;
