@@ -11,8 +11,14 @@ const ExpenseSchema = new mongoose.Schema({
     month: {
         type: String
     },
+    date:{
+        type: Date
+    },
     amount: {
         type: String
+    },
+    expenseID: {
+        type: Number
     }
 },
 { timestamps: true });
