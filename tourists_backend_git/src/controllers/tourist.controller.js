@@ -102,10 +102,26 @@ const updateProfile = async (req, res) => {
         });
 }
 
+
+//delete user
+const deleteProfile = async (req, res) => {
+    var email = req.params.email
+  
+    await Tourist.findOneAndDelete({ email: email }, req.body)
+        .then(data => {
+            res.status(200).send({ data: data });
+        })
+        .catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+    
+  };
+
 //export the functions
 module.exports = {
     register,
     signin,
     getProfile,
-    updateProfile
+    updateProfile,
+    deleteProfile
 };
