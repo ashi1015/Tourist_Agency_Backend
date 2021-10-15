@@ -8,18 +8,6 @@ Front-end that works well with this Back-end:
 
 > [React Table Pagination with react-table 7](https://bezkoder.com/react-table-pagination-server-side/)
 
-> [Angular 8 Pagination example | ngx-pagination](https://bezkoder.com/ngx-pagination-angular-8/)
-
-> [Angular 10 Pagination example | ngx-pagination](https://bezkoder.com/angular-10-pagination-ngx/)
-
-> [Angular 11 Pagination example | ngx-pagination](https://bezkoder.com/angular-11-pagination-ngx/)
-
-> [Angular 12 Pagination example | ngx-pagination](https://bezkoder.com/angular-12-pagination-ngx/)
-
-> [Vue Pagination with Axios and API example](https://bezkoder.com/vue-pagination-axios/)
-
-> [Vuetify Pagination (Server side) example](https://bezkoder.com/vuetify-pagination-server-side/)
-
 
 ## Project setup
 ```
